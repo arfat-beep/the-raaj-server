@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
 const port = process.env.PORT || 5000;
-const useRoute = require("./routes/user");
+const userRoute = require("./routes/user");
+const authRoute = require("./routes/auth");
 dotenv.config();
 // mongoose mongodb connection
 mongoose
@@ -12,7 +13,8 @@ mongoose
   .then(() => console.log("dbConnected"))
   .catch((err) => console.log(err));
 app.use(express.json());
-app.use("/api/users", useRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 
 // app listen and port connection
 app.listen(port, () => {
