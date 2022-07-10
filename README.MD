@@ -5,3 +5,4 @@
 - dotenv (Library for hide secrat key)
 - nodemon (allow us to refreach in every changes)
 - crypto-js (encrypt password)
+- jsonwebtoken (Provides authentication security for users)
