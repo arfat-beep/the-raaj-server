@@ -1,4 +1,7 @@
-const { verifyTokenAndAuthorization } = require("./verifyToken");
+const {
+  verifyTokenAndAuthorization,
+  verifyTokenAndAdmin,
+} = require("./verifyToken");
 const CryptoJS = require("crypto-js");
 const User = require("../Models/User");
 
@@ -30,6 +33,17 @@ router.delete("/id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json("User has beed deleted...");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Get user
+router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const { password, ...others } = user._doc;
+    res.status(200).json(others);
   } catch (err) {
     res.status(500).json(err);
   }
