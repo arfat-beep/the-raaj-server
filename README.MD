@@ -6,3 +6,4 @@
 - nodemon (allow us to refreach in every changes)
 - crypto-js (encrypt password)
 - jsonwebtoken (Provides authentication security for users)
+- stripe (This is use for payment system)
